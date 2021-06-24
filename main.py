@@ -14,13 +14,14 @@ from selenium.webdriver.chrome.options import Options
 
 import telebot
 
-API_token = "1802551249:AAGz3zVXxI5qzBwTzDD3CHyZQHK-Fegio7Q"
+#you know what this is write?
+API_token = ""
 bot = telebot.TeleBot(API_token)
 
 
 def AAS(message):
   if message == "testme":
-    print("print hh")
+    print("print correct code received")
     return False
   else:
     return True
@@ -29,13 +30,13 @@ def AAS(message):
 def send_price(message):
     import smtplib
     from email.mime.text import MIMEText
-    print("i started")
+    print("sending email")
     smtp_ssl_host = 'smtp.gmail.com'  # smtp.mail.yahoo.com
     smtp_ssl_port = 465
-    username = 'between6and30taken@gmail.com'
-    password = 's5Lzd6d22oA4'
-    sender = 'between6and30taken@gmail.com'
-    targets = ['iamhoodie12@gmail.com']
+    username = '@gmail.com' #sender email
+    password = '' #sender email password
+    sender = '@gmail.com' #your not that dumb are you
+    targets = ['@gmail.com'] #email reciver
 
     msg = MIMEText("A new account has been created with the service")
     msg['Subject'] = 'Hello'
@@ -49,7 +50,7 @@ def send_price(message):
 
     e = everything()
     msg = (e[0] + "\n" + e[1])
-    print("this is msg " +msg)
+    print("this is msg " +msg) #I'm not that good with debugging dont laugh
     bot.send_message(message.chat.id, msg)
 
 
@@ -138,6 +139,7 @@ def gg(mail):
     driver = webdriver.Chrome(options=options, executable_path='/home/panda/Downloads/tel/pyCybAccCreate/chromedriver')
 
     def getPass():
+        # generates a password for the cybrary account
         chars = string.ascii_uppercase + string.ascii_lowercase + string.digits
         size = random.randint(18, 18)
         return ''.join(random.choice(chars) for x in range(size))
@@ -145,24 +147,21 @@ def gg(mail):
     # Open URL
 
     driver.get("https://www.cybrary.it/")
-    getEmail = mail
 
     class credentials:
         def __init__(self, password, email):
             self.password = password
             self.email = email
 
-    creds = credentials(getPass(), getEmail)
-
-
+    creds = credentials(getPass(), mail)
 
     with open("account_list.txt", "a") as foo:
-        foo.write("\n"+creds.password + "\n")
-    with open("account_list.txt", "a") as foo:
-        foo.write(creds.email + "\n")
-    with open("account_list.txt" , "a") as foo:
-        foo.write("\n" + "----------------------------------------------------------------- "+"\n")
+        foo.write(creds.email + "\n"
+                  + "\n"+creds.password + "\n" +
+                  "\n" + "----------------------------------------------------------------- "+"\n")
     time.sleep(2)
+
+    #ok so the reaseon i think im really smart for this is because it clicks submit before the reCapcha loads
     initEmail = driver.find_element_by_xpath(
         "/html/body/div/div[1]/div/main/div[1]/div/div/div/div/div[2]/div/div/div/form/div/input")
     initEmail.send_keys(creds.email)
