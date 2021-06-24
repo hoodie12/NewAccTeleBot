@@ -8,23 +8,23 @@ import sys
 import re
 import os
 import logging
-
+import pyotp
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 import telebot
 
 #you know what this is write?
-API_token = ""
+API_token = "1802551249:AAGz3zVXxI5qzBwTzDD3CHyZQHK-Fegio7Q"
 bot = telebot.TeleBot(API_token)
-
+authKey = "M75T2IQUJPWDCR22KE7IBL6VPJETMXA6"
+totp = pyotp.TOTP(authKey)
 
 def AAS(message):
-  if message == "testme":
-    print("print correct code received")
-    return False
-  else:
+  if str(message.text) == totp.now():
     return True
+  else:
+    return False
 
 @bot.message_handler(func=AAS)
 def send_price(message):
@@ -37,12 +37,12 @@ def send_price(message):
     password = '' #sender email password
     sender = '@gmail.com' #your not that dumb are you
     targets = ['@gmail.com'] #email reciver
-
+#
     msg = MIMEText("A new account has been created with the service")
     msg['Subject'] = 'Hello'
     msg['From'] = sender
     msg['To'] = ', '.join(targets)
-
+#
     server = smtplib.SMTP_SSL(smtp_ssl_host, smtp_ssl_port)
     server.login(username, password)
     server.sendmail(sender, targets, msg.as_string())
