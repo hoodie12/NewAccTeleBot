@@ -15,9 +15,9 @@ from selenium.webdriver.chrome.options import Options
 import telebot
 
 #you know what this is write?
-API_token = "1802551249:AAGz3zVXxI5qzBwTzDD3CHyZQHK-Fegio7Q"
+API_token = ""
 bot = telebot.TeleBot(API_token)
-authKey = "M75T2IQUJPWDCR22KE7IBL6VPJETMXA6"
+authKey = ""
 totp = pyotp.TOTP(authKey)
 
 def AAS(message):
