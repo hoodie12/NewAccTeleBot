@@ -59,7 +59,7 @@ def send_price(message):
     com = (re.sub(r'[0-9]', '', com)).strip() #removes all numbers from the message
     com = com.lower()
     print(com)
-    if com == "a":
+    if com == "o":
         print("creating a new oriely account")
         e = funRiely()
         msg = ("Here is your o'Riely account: \n"+e[0] + "\n" + e[1])
