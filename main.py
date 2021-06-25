@@ -17,7 +17,7 @@ from email.mime.text import MIMEText
 from RR import funRiely
 
 myEnv = DotEnv()
-API_token = myEnv.get("API_key")
+API_token = myEnv.get("API_token")
 print(API_token)
 bot = telebot.TeleBot(API_token)
 authKey = myEnv.get("authKey")
@@ -45,7 +45,7 @@ def sendmail():
 
 def AAS(message):
   otpc = message.text
-  otpc = otpc.translate({ord(i):None for i in 'ACac!@#$'}) #removes the a and c from the message
+  otpc = otpc.translate({ord(i):None for i in 'OCoc'}) #removes the a and c from the message
   if otpc == totp.now():
     print("otp correct")
     return True
