@@ -57,14 +57,15 @@ def send_price(message):
     print("checking which command was passed")
     com = message.text
     com = (re.sub(r'[0-9]', '', com)).strip() #removes all numbers from the message
+    com = com.lower()
     print(com)
-    if com == "A".lower():
+    if com == "a":
         print("creating a new oriely account")
         e = funRiely()
         msg = ("Here is your o'Riely account: \n"+e[0] + "\n" + e[1])
         print("this is msg " + msg)  # I'm not that good with debugging dont laugh
         bot.send_message(message.chat.id, msg)
-    elif com == "c".lower():
+    elif com == "c":
         print("creating a new cybrary account")
         e = funCyb()
         msg = ("Here is your cybrary account: \n"+ e[0] + "\n" + e[1])
