@@ -1,6 +1,4 @@
 # NewCybAccTeleBot
-Hello future panda welcome to the very fun world of figuring out what I was thinking if I don't can remember to ill add comments, but we both know they won't help 
-you anyways.
-what else right the email part if you start getting auth errors with the email feature use a proxy to login to gmail I used tinyproxy 
-
-yeah, that's it goodluck.
+This is a project that aims to provide a template for scripts that automate the process of creating new trial accounts for websites. 
+When a message is sent to the telegram bot it uses selenium to inputs 
+a locally created one time email and a randomly generated password and after the sign-up is complete it sends you the credentials as a message on telegram.
